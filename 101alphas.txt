@@ -1,0 +1,94 @@
+Alpha#1: (rank(Ts_ArgMax(SignedPower(((returns < 0) ? stddev(returns, 20) : close), 2), 5)) -
+0.5)
+Alpha#2: (-1 * correlation(rank(delta(log(volume), 2)), rank(((close - open) / open)), 6))
+Alpha#3: (-1 * correlation(rank(open), rank(volume), 10))
+Alpha#4: (-1 * Ts_Rank(rank(low), 9))
+Alpha#5: (rank((open - (sum(vwap, 10) / 10))) * (-1 * abs(rank((close - vwap)))))
+Alpha#6: (-1 * correlation(open, volume, 10))
+Alpha#7: ((adv20 < volume) ? ((-1 * ts_rank(abs(delta(close, 7)), 60)) * sign(delta(close, 7))) : (-1
+* 1))
+Alpha#8: (-1 * rank(((sum(open, 5) * sum(returns, 5)) - delay((sum(open, 5) * sum(returns, 5)),
+10))))
+Alpha#9: ((0 < ts_min(delta(close, 1), 5)) ? delta(close, 1) : ((ts_max(delta(close, 1), 5) < 0) ?
+delta(close, 1) : (-1 * delta(close, 1))))
+Alpha#10: rank(((0 < ts_min(delta(close, 1), 4)) ? delta(close, 1) : ((ts_max(delta(close, 1), 4) < 0)
+? delta(close, 1) : (-1 * delta(close, 1)))))
+Alpha#11: ((rank(ts_max((vwap - close), 3)) + rank(ts_min((vwap - close), 3))) *
+rank(delta(volume, 3)))
+Alpha#12: (sign(delta(volume, 1)) * (-1 * delta(close, 1)))
+Alpha#13: (-1 * rank(covariance(rank(close), rank(volume), 5)))
+Alpha#14: ((-1 * rank(delta(returns, 3))) * correlation(open, volume, 10))
+Alpha#15: (-1 * sum(rank(correlation(rank(high), rank(volume), 3)), 3))
+Alpha#16: (-1 * rank(covariance(rank(high), rank(volume), 5)))
+Alpha#17: (((-1 * rank(ts_rank(close, 10))) * rank(delta(delta(close, 1), 1))) *
+rank(ts_rank((volume / adv20), 5)))
+Alpha#18: (-1 * rank(((stddev(abs((close - open)), 5) + (close - open)) + correlation(close, open,
+10))))
+Alpha#19: ((-1 * sign(((close - delay(close, 7)) + delta(close, 7)))) * (1 + rank((1 + sum(returns,
+250)))))
+Alpha#20: (((-1 * rank((open - delay(high, 1)))) * rank((open - delay(close, 1)))) * rank((open -
+delay(low, 1))))
+Alpha#21: ((((sum(close, 8) / 8) + stddev(close, 8)) < (sum(close, 2) / 2)) ? (-1 * 1) : (((sum(close,
+2) / 2) < ((sum(close, 8) / 8) - stddev(close, 8))) ? 1 : (((1 < (volume / adv20)) || ((volume /
+adv20) == 1)) ? 1 : (-1 * 1))))
+Alpha#22: (-1 * (delta(correlation(high, volume, 5), 5) * rank(stddev(close, 20))))
+Alpha#23: (((sum(high, 20) / 20) < high) ? (-1 * delta(high, 2)) : 0)
+Alpha#24: ((((delta((sum(close, 100) / 100), 100) / delay(close, 100)) < 0.05) ||
+((delta((sum(close, 100) / 100), 100) / delay(close, 100)) == 0.05)) ? (-1 * (close - ts_min(close,
+100))) : (-1 * delta(close, 3)))
+Alpha#25: rank(((((-1 * returns) * adv20) * vwap) * (high - close)))
+Alpha#26: (-1 * ts_max(correlation(ts_rank(volume, 5), ts_rank(high, 5), 5), 3))
+Alpha#27: ((0.5 < rank((sum(correlation(rank(volume), rank(vwap), 6), 2) / 2.0))) ? (-1 * 1) : 1)
+Alpha#28: scale(((correlation(adv20, low, 5) + ((high + low) / 2)) - close))
+Alpha#29: (min(product(rank(rank(scale(log(sum(ts_min(rank(rank((-1 * rank(delta((close - 1),
+5))))), 2), 1))))), 1), 5) + ts_rank(delay((-1 * returns), 6), 5))
+Alpha#30: (((1.0 - rank(((sign((close - delay(close, 1))) + sign((delay(close, 1) - delay(close, 2)))) +
+sign((delay(close, 2) - delay(close, 3)))))) * sum(volume, 5)) / sum(volume, 20))
+Alpha#31: ((rank(rank(rank(decay_linear((-1 * rank(rank(delta(close, 10)))), 10)))) + rank((-1 *
+delta(close, 3)))) + sign(scale(correlation(adv20, low, 12))))
+Alpha#32: (scale(((sum(close, 7) / 7) - close)) + (20 * scale(correlation(vwap, delay(close, 5),
+230))))
+Alpha#33: rank((-1 * ((1 - (open / close))^1)))
+Alpha#34: rank(((1 - rank((stddev(returns, 2) / stddev(returns, 5)))) + (1 - rank(delta(close, 1)))))
+Alpha#35: ((Ts_Rank(volume, 32) * (1 - Ts_Rank(((close + high) - low), 16))) * (1 -
+Ts_Rank(returns, 32)))
+Alpha#36: (((((2.21 * rank(correlation((close - open), delay(volume, 1), 15))) + (0.7 * rank((open
+- close)))) + (0.73 * rank(Ts_Rank(delay((-1 * returns), 6), 5)))) + rank(abs(correlation(vwap,
+adv20, 6)))) + (0.6 * rank((((sum(close, 200) / 200) - open) * (close - open)))))
+Alpha#37: (rank(correlation(delay((open - close), 1), close, 200)) + rank((open - close)))
+Alpha#38: ((-1 * rank(Ts_Rank(close, 10))) * rank((close / open)))
+Alpha#39: ((-1 * rank((delta(close, 7) * (1 - rank(decay_linear((volume / adv20), 9)))))) * (1 +
+rank(sum(returns, 250))))
+Alpha#40: ((-1 * rank(stddev(high, 10))) * correlation(high, volume, 10))
+Alpha#41: (((high * low)^0.5) - vwap)
+Alpha#42: (rank((vwap - close)) / rank((vwap + close)))
+Alpha#43: (ts_rank((volume / adv20), 20) * ts_rank((-1 * delta(close, 7)), 8)) 
+Alpha#44: (-1 * correlation(high, rank(volume), 5))
+Alpha#45: (-1 * ((rank((sum(delay(close, 5), 20) / 20)) * correlation(close, volume, 2)) *
+rank(correlation(sum(close, 5), sum(close, 20), 2))))
+Alpha#46: ((0.25 < (((delay(close, 20) - delay(close, 10)) / 10) - ((delay(close, 10) - close) / 10))) ?
+(-1 * 1) : (((((delay(close, 20) - delay(close, 10)) / 10) - ((delay(close, 10) - close) / 10)) < 0) ? 1 :
+((-1 * 1) * (close - delay(close, 1)))))
+Alpha#47: ((((rank((1 / close)) * volume) / adv20) * ((high * rank((high - close))) / (sum(high, 5) /
+5))) - rank((vwap - delay(vwap, 5))))
+Alpha#48: (indneutralize(((correlation(delta(close, 1), delta(delay(close, 1), 1), 250) *
+delta(close, 1)) / close), IndClass.subindustry) / sum(((delta(close, 1) / delay(close, 1))^2), 250))
+Alpha#49: (((((delay(close, 20) - delay(close, 10)) / 10) - ((delay(close, 10) - close) / 10)) < (-1 *
+0.1)) ? 1 : ((-1 * 1) * (close - delay(close, 1))))
+Alpha#50: (-1 * ts_max(rank(correlation(rank(volume), rank(vwap), 5)), 5))
+Alpha#51: (((((delay(close, 20) - delay(close, 10)) / 10) - ((delay(close, 10) - close) / 10)) < (-1 *
+0.05)) ? 1 : ((-1 * 1) * (close - delay(close, 1))))
+Alpha#52: ((((-1 * ts_min(low, 5)) + delay(ts_min(low, 5), 5)) * rank(((sum(returns, 240) -
+sum(returns, 20)) / 220))) * ts_rank(volume, 5))
+Alpha#53: (-1 * delta((((close - low) - (high - close)) / (close - low)), 9))
+Alpha#54: ((-1 * ((low - close) * (open^5))) / ((low - high) * (close^5)))
+Alpha#55: (-1 * correlation(rank(((close - ts_min(low, 12)) / (ts_max(high, 12) - ts_min(low,
+12)))), rank(volume), 6))
+Alpha#56: (0 - (1 * (rank((sum(returns, 10) / sum(sum(returns, 2), 3))) * rank((returns * cap)))))
+Alpha#57: (0 - (1 * ((close - vwap) / decay_linear(rank(ts_argmax(close, 30)), 2))))
+Alpha#58: (-1 * Ts_Rank(decay_linear(correlation(IndNeutralize(vwap, IndClass.sector), volume,
+3.92795), 7.89291), 5.50322))
+Alpha#59: (-1 * Ts_Rank(decay_linear(correlation(IndNeutralize(((vwap * 0.728317) + (vwap *
+(1 - 0.728317))), IndClass.industry), volume, 4.25197), 16.2289), 8.19648))
+Alpha#60: (0 - (1 * ((2 * scale(rank(((((close - low) - (high - close)) / (high - low)) * volume)))) -
+scale(rank(ts_argmax(close, 10)))))) 
